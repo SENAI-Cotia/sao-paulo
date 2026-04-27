@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EntreNos - Home</title>
+</head>
+<body>
+
+<h1>Bem-vindo ao EntreNos</h1>
+<p>Sistema de Acolhimento e Triagem</p>
+<hr>
+
+<nav>
+    <a href="/cadastro">Cadastrar Novo Aluno</a> |
+    <a href="/sobre">Sobre Nós</a>
+</nav>
+
+<br>
+
+<h3>Alunos Cadastrados</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="aluno : ${alunos}">
+        <td th:text="${aluno.id}"></td>
+        <td th:text="${aluno.nome}"></td>
+        <td th:text="${aluno.email}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
