@@ -6,6 +6,14 @@
 </head>
 <body>
 
+<div th:if="${mensagemErro}">
+    <p th:text="${mensagemErro}"></p>
+</div>
+
+<div th:if="${mensagemEmail}">
+    <p th:text="${mensagemEmail}"></p>
+</div>
+
 <h2>Cadastro de Aluno</h2>
 <hr>
 
