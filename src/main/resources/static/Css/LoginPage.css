@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --verde-escuro: #2d5a4e;
+  --verde-medio: #3d7a6b;
+  --verde-claro: #a8d5c2;
+  --verde-palido: #e6f4ef;
+  --branco: #ffffff;
+  --texto-escuro: #1a2e28;
+  --borda: #c8e0d8;
+  --radius: 12px;
+  --radius-sm: 6px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--verde-palido);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--verde-escuro);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--branco);
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.card-login {
+  background-color: var(--verde-claro);
+  border-radius: var(--radius);
+  padding: 2.8rem 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(45, 90, 78, 0.15);
+}
+
+.card-login h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--verde-escuro);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.grupo { margin-bottom: 1.2rem; }
+
+.grupo label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--verde-escuro);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.grupo input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--borda);
+  border-radius: var(--radius-sm);
+  background-color: var(--branco);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--texto-escuro);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.grupo input:focus {
+  border-color: var(--verde-escuro);
+  box-shadow: 0 0 0 3px rgba(45, 90, 78, 0.12);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.8rem;
+  background-color: var(--verde-escuro);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-login:hover {
+  background-color: var(--verde-medio);
+  transform: translateY(-1px);
+}
+
+.link-cadastro {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.88rem;
+  color: var(--verde-escuro);
+}
+
+.link-cadastro a {
+  color: var(--verde-escuro);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+footer {
+  background-color: var(--verde-escuro);
+  padding: 1.2rem 3rem;
+  text-align: center;
+  color: var(--verde-claro);
+  font-size: 0.82rem;
+}
