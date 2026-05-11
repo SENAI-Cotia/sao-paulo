@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel da Psicóloga</title>
+    <link rel="stylesheet" href="/Css/Psicologa.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="/" class="logo">EntreNós</a>
+    <span class="badge-psicologa">Psicóloga</span>
+</header>
+
+<main>
+
+    <!-- PAINEL AGENDAMENTOS -->
+    <div class="painel">
+        <h2>Agendamentos</h2>
+
+        <div class="agendamento-item ativo" onclick="mostrarDados('Aluno 1', '16', 'Sim')">
+            <div class="aluno-info">
+                <span class="aluno-nome">Aluno 1</span>
+                <span class="aluno-hora">15h</span>
+            </div>
+            <button class="btn-detalhes">Ver Detalhes</button>
+        </div>
+
+        <div class="agendamento-item" onclick="mostrarDados('Aluno 2', '22', 'Não')">
+            <div class="aluno-info">
+                <span class="aluno-nome">Aluno 2</span>
+                <span class="aluno-hora">16h</span>
+            </div>
+            <button class="btn-detalhes">Ver Detalhes</button>
+        </div>
+
+        <div class="agendamento-item" onclick="mostrarDados('Aluno 3', '19', 'Sim')">
+            <div class="aluno-info">
+                <span class="aluno-nome">Aluno 3</span>
+                <span class="aluno-hora">17h</span>
+            </div>
+            <button class="btn-detalhes">Ver Detalhes</button>
+        </div>
+
+    </div>
+
+    <!-- PAINEL DADOS DO ALUNO -->
+    <div class="painel-dados">
+        <h2>Dados do Aluno</h2>
+
+        <div id="dados-conteudo" class="dados-vazio">
+            <span>Selecione um agendamento</span>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>Rodapé — &copy; 2026 ENTRENÓS</p>
+</footer>
+
+<script>
+    function mostrarDados(nome, idade, triagem) {
+      // destacar item ativo
+      document.querySelectorAll('.agendamento-item').forEach(el => el.classList.remove('ativo'));
+      event.currentTarget.classList.add('ativo');
+
+      const badgeClass = triagem === 'Sim' ? 'badge-sim' : 'badge-nao';
+
+      document.getElementById('dados-conteudo').innerHTML = `
+        <div class="dados-grid">
+          <div class="dados-campos">
+            <div class="campo">
+              <label>Nome</label>
+              <span>${nome}</span>
+            </div>
+            <div class="campo">
+              <label>Idade</label>
+              <span>${idade}</span>
+            </div>
+            <div class="campo">
+              <label>Fez a triagem?</label>
+              <span class="${badgeClass}">${triagem}</span>
+            </div>
+          </div>
+          <div class="foto-aluno">Foto</div>
+        </div>
+      `;
+    }
+</script>
+
+</body>
+</html>

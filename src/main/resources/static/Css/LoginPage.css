@@ -62,6 +62,40 @@ main {
   margin-bottom: 2rem;
 }
 
+/* ── SELETOR DE TIPO (ADICIONADO) ── */
+.tipo-selector {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.tipo-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid var(--borda);
+  border-radius: var(--radius-sm);
+  background: var(--branco);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--verde-medio);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tipo-btn.ativo {
+  background-color: var(--verde-escuro);
+  color: var(--branco);
+  border-color: var(--verde-escuro);
+}
+
+.tipo-btn:hover:not(.ativo) {
+  background-color: var(--verde-palido);
+  border-color: var(--verde-medio);
+}
+
+/* ── CAMPOS DO FORMULÁRIO ── */
 .grupo { margin-bottom: 1.2rem; }
 
 .grupo label {

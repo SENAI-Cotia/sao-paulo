@@ -9,16 +9,24 @@
 <body>
 
 <header>
-    <a href="/" class="logo">ENTRENÓS</a>
+    <a href="/" class="logo">ENTRE<span>NÓS</span></a>
 </header>
 
 <main>
     <div class="card-login">
-        <h2>Login</h2>
+        <h2>Bem-vindo!</h2>
 
-        <p th:if="${mensagemErro}" th:text="${mensagemErro}" style="color: red; font-size: 0.9rem; margin-bottom: 10px;"></p>
+        <div class="tipo-selector">
+            <button type="button" class="tipo-btn ativo" id="btn-aluno" onclick="selecionarTipo('aluno')">🎓 Aluno</button>
+            <button type="button" class="tipo-btn" id="btn-psicologa" onclick="selecionarTipo('psicologa')">🩺 Psicóloga</button>
+        </div>
+
+        <p th:if="${mensagemErro}" th:text="${mensagemErro}"
+           style="color: var(--erro); font-size: 0.9rem; margin-bottom: 10px; text-align: center;"></p>
 
         <form th:action="@{/login}" method="POST">
+            <input type="hidden" name="tipo" id="campo-tipo" value="aluno" />
+
             <div class="grupo">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="seu@email.com" required />
@@ -29,15 +37,26 @@
                 <input type="password" id="senha" name="senha" placeholder="••••••••" required />
             </div>
 
-            <button class="btn-login" type="submit">Logar</button>
+            <button class="btn-login" type="submit">Entrar</button>
         </form>
 
+        <p class="link-cadastro" style="text-align: center; margin-top: 15px;">
+            Não tem conta? <a href="/cadastro">Cadastre-se aqui</a>
+        </p>
     </div>
 </main>
 
 <footer>
-    <p>Rodapé — © 2026 ENTRENÓS</p>
+    <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
+
+<script>
+    function selecionarTipo(tipo) {
+        document.getElementById('campo-tipo').value = tipo;
+        document.getElementById('btn-aluno').classList.toggle('ativo', tipo === 'aluno');
+        document.getElementById('btn-psicologa').classList.toggle('ativo', tipo === 'psicologa');
+    }
+</script>
 
 </body>
 </html>
