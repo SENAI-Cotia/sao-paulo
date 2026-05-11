@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -24,6 +25,12 @@ public class AlunoController {
         return "HomePage";
     }
 
+    // Rota para a página de Login
+    @GetMapping("/login")
+    public String exibirLogin() {
+        return "LoginPage";
+    }
+
     // Rota para a página "Sobre Nós"
     @GetMapping("/sobre")
     public String sobreNos() {
@@ -36,6 +43,22 @@ public class AlunoController {
         model.addAttribute("aluno", new Aluno());
         return "cadastro";
     }
+
+    @PostMapping("/login")
+    public String autenticar(@RequestParam String email, @RequestParam String senha, RedirectAttributes redirectAttributes) {
+
+        // Busca o aluno pelo e-mail
+        Optional<Aluno> aluno = alunoRepository.findByEmail(email);
+
+        if (aluno.isPresent()) {
+            return "redirect:/";
+        } else {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Usuário ou senha inválidos");
+            return "redirect:/login";
+        }
+    }
+
+
 
     // Rota para receber os dados do formulário e salvar no banco
     @PostMapping("/salvar")
