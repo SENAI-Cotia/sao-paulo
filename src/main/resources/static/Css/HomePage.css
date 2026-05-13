@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  /* Cores */
   --verde-escuro: #205F55;
   --verde-medio: #2E8A8B;
   --verde-claro: #6DB7CE;
@@ -12,18 +11,12 @@
   --texto-medio: #2E8A8B;
   --texto-claro: #6DB7CE;
   --borda: #C5E1E8;
-
-  /* Estilização mantida */
   --radius: 12px;
   --radius-sm: 6px;
   --shadow: 0 4px 20px rgba(32, 95, 85, 0.15);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -33,9 +26,7 @@ body {
 }
 
 /* ─── UTILITÁRIO ─── */
-.oculto {
-  display: none;
-}
+.oculto { display: none; }
 
 /* ─── HEADER / NAV ─── */
 header {
@@ -72,9 +63,7 @@ nav a {
   transition: color 0.2s;
 }
 
-nav a:hover {
-  color: var(--branco);
-}
+nav a:hover { color: var(--branco); }
 
 .btn-nav {
   background-color: #e74c3c;
@@ -86,19 +75,20 @@ nav a:hover {
   transition: background 0.3s;
 }
 
-.btn-nav:hover {
-  background-color: #c0392b;
-}
+.btn-nav:hover { background-color: #c0392b; }
 
 /* ─── HERO ─── */
 .hero {
   background-color: var(--verde-palido);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.4fr;
   gap: 3rem;
-  padding: 5rem 3rem;
-  align-items: center;
-  min-height: 480px;
+  padding: 4rem 3rem;
+  align-items: start;
+}
+
+.hero-text {
+  padding-top: 1rem;
 }
 
 .hero-text h1 {
@@ -135,16 +125,169 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
-.hero-imagem {
-  background-color: var(--borda);
+/* ─── CALENDÁRIO ─── */
+.cal-container {
+  background-color: var(--branco);
   border-radius: var(--radius);
-  height: 320px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.cal-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--verde-escuro);
+  text-transform: capitalize;
+}
+
+.cal-nav {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--verde-escuro);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.cal-nav:hover { background-color: var(--verde-palido); }
+
+/* ─── GRADE ─── */
+.cal-tabela {
+  width: 100%;
+}
+
+.cal-semana-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--texto-claro);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--borda);
+  margin-bottom: 0.4rem;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal-cel {
+  border: 1px solid var(--borda);
+  min-height: 56px;
+  padding: 0.4rem;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.cal-cel.vazio {
+  background-color: #fafafa;
+  border-color: #eef;
+}
+
+.cal-cel.passado,
+.cal-cel.indisponivel {
+  background-color: #f4f6f7;
+  cursor: not-allowed;
+}
+
+.cal-cel.passado .cal-num,
+.cal-cel.indisponivel .cal-num {
+  color: #c0cdd3;
+}
+
+.cal-cel.disponivel {
+  cursor: pointer;
+}
+
+.cal-cel.disponivel:hover {
+  background-color: var(--verde-palido);
+}
+
+.cal-cel.hoje .cal-num {
+  background-color: var(--verde-escuro);
+  color: var(--branco);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--texto-claro);
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
+}
+
+.cal-cel.selecionado {
+  background-color: var(--verde-palido);
+  border-color: var(--verde-escuro);
+}
+
+.cal-cel.selecionado .cal-num {
+  color: var(--verde-escuro);
+  font-weight: 700;
+}
+
+.cal-num {
+  font-size: 0.82rem;
+  color: var(--texto-escuro);
+  font-weight: 400;
+}
+
+/* ─── HORÁRIOS ─── */
+.cal-horarios {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borda);
+}
+
+.cal-horarios-titulo {
+  font-size: 0.85rem;
+  color: var(--texto-medio);
+  margin-bottom: 0.8rem;
+  text-transform: capitalize;
+}
+
+.cal-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.slot {
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--borda);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--verde-escuro);
+  background: var(--verde-palido);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.slot:hover {
+  background: var(--verde-escuro);
+  color: var(--branco);
+  border-color: var(--verde-escuro);
+}
+
+.slot.bloqueado {
+  background: #f0f4f5;
+  color: #b0bec5;
+  border-color: #e0e5e8;
+  cursor: not-allowed;
 }
 
 /* ─── POR QUE NOS ESCOLHER ─── */
@@ -245,9 +388,7 @@ nav a:hover {
   transition: background-color 0.2s;
 }
 
-.btn-triagem:hover {
-  background-color: var(--branco);
-}
+.btn-triagem:hover { background-color: var(--branco); }
 
 /* ─── SOBRE A TRIAGEM ─── */
 .sobre-triagem {
@@ -283,8 +424,6 @@ nav a:hover {
   font-size: 0.85rem;
 }
 
-
-
 /* ─── SOBRE NÓS ─── */
 .sobre-nos {
   padding: 5rem 3rem;
@@ -319,27 +458,16 @@ footer {
 
 /* ─── RESPONSIVO ─── */
 @media (max-width: 768px) {
-  header {
-    padding: 0 1.5rem;
-  }
+  header { padding: 0 1.5rem; }
 
-  nav {
-    gap: 1rem;
-  }
+  nav { gap: 1rem; }
 
-  nav a:not(.btn-nav) {
-    display: none;
-  }
+  nav a:not(.btn-nav) { display: none; }
 
   .hero,
   .sobre-triagem {
     grid-template-columns: 1fr;
     padding: 3rem 1.5rem;
-  }
-
-  .hero-imagem,
-  .imagem-triagem {
-    height: 200px;
   }
 
   .por-que,
@@ -349,11 +477,9 @@ footer {
     padding: 3rem 1.5rem;
   }
 
-  .grid-perguntas {
-    grid-template-columns: 1fr;
-  }
+  .grid-perguntas { grid-template-columns: 1fr; }
 
-  .hero-text h1 {
-    font-size: 1.8rem;
-  }
+  .hero-text h1 { font-size: 1.8rem; }
+
+  .cal-cel { min-height: 40px; }
 }
