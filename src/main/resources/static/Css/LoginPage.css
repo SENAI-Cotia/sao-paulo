@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  /* ── Paleta Principal ── */
+
   --verde-escuro:  #205F55;
   --verde-medio:   #2E8A8B;
   --verde-claro:   #6DB7CE;
   --verde-palido:  #DDECF3;
   --branco:        #FFFFFF;
 
-  /* ── Texto ── */
+
   --texto-escuro:  #163D37;
   --texto-medio:   #2E8A8B;
   --texto-claro:   #6DB7CE;
 
-  /* ── Estrutura ── */
+
   --borda:         #C5E1E8;
   --radius:        12px;
   --radius-sm:     6px;
@@ -69,7 +69,7 @@ main {
   margin-bottom: 2rem;
 }
 
-/* ── SELETOR DE TIPO ── */
+
 .tipo-selector {
   display: flex;
   gap: 0.8rem;
@@ -102,7 +102,7 @@ main {
   border-color: var(--verde-medio);
 }
 
-/* ── CAMPOS DO FORMULÁRIO ── */
+
 .grupo { margin-bottom: 1.2rem; }
 
 .grupo label {

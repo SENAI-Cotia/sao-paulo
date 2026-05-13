@@ -25,7 +25,12 @@ body {
   flex-direction: column;
 }
 
-/* ── HEADER ── */
+
+.oculto {
+  display: none;
+}
+
+
 header {
   background-color: var(--verde-escuro);
   padding: 0 3rem;
@@ -45,7 +50,7 @@ header {
   color: var(--verde-claro);
 }
 
-/* ── MAIN ── */
+
 main {
   flex: 1;
   display: flex;
@@ -54,7 +59,7 @@ main {
   padding: 3rem 1.5rem;
 }
 
-/* ── CARD ── */
+
 .card-cadastro {
   background-color: var(--verde-claro);
   border-radius: var(--radius);
@@ -80,7 +85,7 @@ main {
   margin-bottom: 1.8rem;
 }
 
-/* ── MENSAGENS ── */
+
 .mensagem {
   font-size: 0.88rem;
   text-align: center;
@@ -101,7 +106,7 @@ main {
   border: 1px solid rgba(192, 57, 43, 0.25);
 }
 
-/* ── CAMPOS ── */
+
 .grupo {
   margin-bottom: 1.2rem;
 }
@@ -134,7 +139,38 @@ main {
   box-shadow: 0 0 0 3px rgba(32, 95, 85, 0.12);
 }
 
-/* ── BOTÃO ── */
+.grupo > div {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.tipo-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid var(--borda);
+  border-radius: var(--radius-sm);
+  background: var(--branco);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--texto-medio);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tipo-btn.ativo {
+  background-color: var(--verde-escuro);
+  border-color: var(--verde-escuro);
+  color: var(--branco);
+}
+
+.tipo-btn:hover:not(.ativo) {
+  border-color: var(--verde-medio);
+  color: var(--verde-escuro);
+}
+
+
 .btn-cadastrar {
   width: 100%;
   padding: 0.85rem;
@@ -155,7 +191,7 @@ main {
   transform: translateY(-1px);
 }
 
-/* ── LINK PARA LOGIN ── */
+
 .link-login {
   text-align: center;
   margin-top: 1.5rem;
@@ -169,7 +205,7 @@ main {
   text-decoration: underline;
 }
 
-/* ── FOOTER ── */
+
 footer {
   background-color: var(--verde-escuro);
   padding: 1.2rem 3rem;
@@ -178,7 +214,7 @@ footer {
   font-size: 0.82rem;
 }
 
-/* ── RESPONSIVO ── */
+
 @media (max-width: 480px) {
   header {
     padding: 0 1.5rem;

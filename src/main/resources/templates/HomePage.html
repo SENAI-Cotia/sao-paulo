@@ -18,7 +18,7 @@
 
         <span th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '!'"></span>
 
-        <form th:action="@{/logout}" method="post" id="logout-form" style="display: none;"></form>
+        <form th:action="@{/logout}" method="post" id="logout-form" class="oculto"></form>
 
         <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
     </nav>
@@ -84,17 +84,6 @@
     </div>
     <div class="imagem-triagem">
         Imagem da triagem
-    </div>
-</section>
-
-<!-- ─── PERGUNTAS ─── -->
-<section class="perguntas" id="perguntas">
-    <h2>Perguntas frequentes</h2>
-    <div class="grid-perguntas">
-        <div class="pergunta-item"><span class="pergunta-letra">A</span> Pergunta A — clique para saber mais</div>
-        <div class="pergunta-item"><span class="pergunta-letra">C</span> Pergunta C — clique para saber mais</div>
-        <div class="pergunta-item"><span class="pergunta-letra">B</span> Pergunta B — clique para saber mais</div>
-        <div class="pergunta-item"><span class="pergunta-letra">D</span> Pergunta D — clique para saber mais</div>
     </div>
 </section>
 

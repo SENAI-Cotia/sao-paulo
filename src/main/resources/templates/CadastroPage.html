@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro — EntreNós</title>
-    <link rel="stylesheet" href="/Css/Cadastro.css" />
+    <link rel="stylesheet" href="/Css/CadastroPage.css" />
 </head>
 <body>
 <header>
@@ -51,7 +51,7 @@
                 <input type="password" id="confirmarSenha" placeholder="Repita a senha" required minlength="6" />
             </div>
 
-            <div class="grupo" id="grupo-codigo" style="display:none;">
+            <div class="grupo" id="grupo-codigo">
                 <label for="codigoPsicologo">Código de Psicólogo</label>
                 <input type="text" id="codigoPsicologo" name="codigoPsicologo" placeholder="Digite o código secreto" />
             </div>
@@ -68,11 +68,14 @@
     <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
 <script>
+    // Oculta o campo de código no carregamento via classe CSS
+    document.getElementById('grupo-codigo').classList.add('oculto');
+
     function selecionarPerfil(tipo) {
         document.getElementById('btn-aluno').classList.toggle('ativo', tipo === 'aluno');
         document.getElementById('btn-psi').classList.toggle('ativo', tipo === 'psicologo');
         document.getElementById('tipoPerfil').value = tipo;
-        document.getElementById('grupo-codigo').style.display = tipo === 'psicologo' ? 'block' : 'none';
+        document.getElementById('grupo-codigo').classList.toggle('oculto', tipo !== 'psicologo');
     }
 
     document.querySelector('form').addEventListener('submit', function (e) {
