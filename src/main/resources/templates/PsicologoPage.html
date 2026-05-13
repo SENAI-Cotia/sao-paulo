@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Profissional</title>
+    <link rel="stylesheet" href="/Css/Psicologa.css" />
+</head>
+<body>
+<header>
+    <a href="/" class="logo">EntreNós</a>
+    <span class="badge-psicologa" th:text="${nomeUsuario != null ? nomeUsuario : 'Profissional'}">Psicólogo</span>
+</header>
+<main>
+    <div class="painel">
+        <h2>Lista de Usuários</h2>
+        <div th:each="u : ${usuarios}"
+             class="agendamento-item"
+             th:attr="onclick=|mostrarDados(this, '${u.nome}', '${u.email}', '${u.role}')|">
+            <div class="usuario-info">
+                <span class="usuario-nome" th:text="${u.nome}">Nome do Aluno</span>
+                <span class="usuario-hora" th:text="${u.role}">ROLE</span>
+            </div>
+            <button class="btn-detalhes">Ver Detalhes</button>
+        </div>
+        <div th:if="${#lists.isEmpty(usuarios)}">
+            <p>Nenhum usuário cadastrado.</p>
+        </div>
+    </div>
+    <div class="painel-dados">
+        <h2>Dados Selecionados</h2>
+        <div id="dados-conteudo" class="dados-vazio">
+            <span>Selecione um usuário na lista ao lado</span>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>Rodapé — &copy; 2026 ENTRENÓS</p>
+</footer>
+<script>
+    function mostrarDados(elemento, nome, email, role) {
+        document.querySelectorAll('.agendamento-item')
+                .forEach(el => el.classList.remove('ativo'));
+
+        elemento.classList.add('ativo');
+
+        const badgeClass = role === 'ROLE_ALUNO' ? 'badge-sim' : 'badge-nao';
+        const labelRole  = role === 'ROLE_ALUNO' ? 'Aluno' : 'Psicólogo';
+
+        document.getElementById('dados-conteudo').innerHTML = `
+            <div class="dados-grid">
+                <div class="dados-campos">
+                    <div class="campo">
+                        <label>Nome</label>
+                        <span>${nome}</span>
+                    </div>
+                    <div class="campo">
+                        <label>E-mail</label>
+                        <span>${email}</span>
+                    </div>
+                    <div class="campo">
+                        <label>Tipo de Perfil</label>
+                        <span class="${badgeClass}">${labelRole}</span>
+                    </div>
+                </div>
+                <div class="foto-usuario">Foto</div>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>

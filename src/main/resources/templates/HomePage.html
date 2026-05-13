@@ -15,9 +15,12 @@
         <a href="#triagem">Triagem</a>
         <a href="#perguntas">Perguntas</a>
         <a href="#sobre">Sobre nós</a>
-        <span th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '!'"
-              style="color: #a8d5c2; font-size: 0.9rem;"></span>
-        <a href="/logout" class="btn-nav">Sair</a>
+
+        <span th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '!'"></span>
+
+        <form th:action="@{/logout}" method="post" id="logout-form" style="display: none;"></form>
+
+        <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
     </nav>
 </header>
 

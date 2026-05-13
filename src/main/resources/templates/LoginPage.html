@@ -17,31 +17,37 @@
         <h2>Bem-vindo!</h2>
 
         <div class="tipo-selector">
-            <button type="button" class="tipo-btn ativo" id="btn-aluno" onclick="selecionarTipo('aluno')">🎓 Aluno</button>
-            <button type="button" class="tipo-btn" id="btn-psicologa" onclick="selecionarTipo('psicologa')">🩺 Psicóloga</button>
+            <button type="button" class="tipo-btn ativo" id="btn-usuario" onclick="selecionarTipo('usuario')">🎓 Aluno</button>
+            <button type="button" class="tipo-btn" id="btn-psicologo" onclick="selecionarTipo('psicologo')">🩺 Psicólogo</button>
         </div>
 
-        <p th:if="${mensagemErro}" th:text="${mensagemErro}"
-           style="color: var(--erro); font-size: 0.9rem; margin-bottom: 10px; text-align: center;"></p>
+        <p th:if="${param.error}"
+           style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 15px; text-align: center; font-weight: bold;">
+            E-mail ou senha inválidos.
+        </p>
+
+        <p th:if="${param.logout}"
+           style="color: #2ecc71; font-size: 0.9rem; margin-bottom: 15px; text-align: center;">
+            Você saiu com sucesso.
+        </p>
 
         <form th:action="@{/login}" method="POST">
-            <input type="hidden" name="tipo" id="campo-tipo" value="aluno" />
 
             <div class="grupo">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+                <label for="username">E-mail</label>
+                <input type="email" id="username" name="username" placeholder="seu@email.com" required autofocus />
             </div>
 
             <div class="grupo">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required />
             </div>
 
             <button class="btn-login" type="submit">Entrar</button>
         </form>
 
-        <p class="link-cadastro" style="text-align: center; margin-top: 15px;">
-            Não tem conta? <a href="/cadastro">Cadastre-se aqui</a>
+        <p class="link-cadastro" style="text-align: center; margin-top: 20px;">
+            Não tem conta? <a href="/cadastro" style="color: #4a90e2; text-decoration: none; font-weight: bold;">Cadastre-se aqui</a>
         </p>
     </div>
 </main>
@@ -52,9 +58,8 @@
 
 <script>
     function selecionarTipo(tipo) {
-        document.getElementById('campo-tipo').value = tipo;
-        document.getElementById('btn-aluno').classList.toggle('ativo', tipo === 'aluno');
-        document.getElementById('btn-psicologa').classList.toggle('ativo', tipo === 'psicologa');
+        document.getElementById('btn-usuario').classList.toggle('ativo', tipo === 'usuario');
+        document.getElementById('btn-psicologo').classList.toggle('ativo', tipo === 'psicologo');
     }
 </script>
 

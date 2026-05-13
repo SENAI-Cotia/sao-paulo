@@ -3,8 +3,8 @@ package com.entrenos.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_aluno")
-public class Aluno {
+@Table(name = "tb_usuario")
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +19,18 @@ public class Aluno {
     @Column(nullable = false)
     private String senha;
 
-    public Aluno() {}
+    @Column(nullable = false)
+    private String role;
 
-    public Aluno(Long id, String nome, String email, String senha) {
+    public Usuario() {}
+
+
+    public Usuario(Long id, String nome, String email, String senha, String role) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.role = role;
     }
 
     // Getters e Setters
@@ -37,4 +42,6 @@ public class Aluno {
     public void setEmail(String email) { this.email = email; }
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+    public String getRole() {return role;}
+    public void setRole(String role) {this.role = role;}
 }
