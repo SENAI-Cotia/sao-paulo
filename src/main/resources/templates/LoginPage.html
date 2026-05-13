@@ -21,13 +21,11 @@
             <button type="button" class="tipo-btn" id="btn-psicologo" onclick="selecionarTipo('psicologo')">🩺 Psicólogo</button>
         </div>
 
-        <p th:if="${param.error}"
-           style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 15px; text-align: center; font-weight: bold;">
+        <p th:if="${param.error}">
             E-mail ou senha inválidos.
         </p>
 
-        <p th:if="${param.logout}"
-           style="color: #2ecc71; font-size: 0.9rem; margin-bottom: 15px; text-align: center;">
+        <p th:if="${param.logout}">
             Você saiu com sucesso.
         </p>
 
@@ -46,8 +44,8 @@
             <button class="btn-login" type="submit">Entrar</button>
         </form>
 
-        <p class="link-cadastro" style="text-align: center; margin-top: 20px;">
-            Não tem conta? <a href="/cadastro" style="color: #4a90e2; text-decoration: none; font-weight: bold;">Cadastre-se aqui</a>
+        <p class="link-cadastro">
+            Não tem conta? <a href="/cadastro">Cadastre-se aqui</a>
         </p>
     </div>
 </main>
