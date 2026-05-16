@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login — Psi&Mente</title>
+    <title>Login — EntreNós</title>
     <link rel="stylesheet" href="/Css/LoginPage.css" />
 </head>
 <body>
 
 <header>
-    <a href="/" class="logo">Psi&amp;Mente</a>
+    <a href="/" class="logo">ENTRENÓS</a>
 </header>
 
 <main>
     <div class="card-login">
-        <h2>Login / Cadastro</h2>
+        <h2>Login</h2>
 
-        <div class="grupo">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="seu@email.com" />
-        </div>
+        <p th:if="${mensagemErro}" th:text="${mensagemErro}" style="color: red; font-size: 0.9rem; margin-bottom: 10px;"></p>
 
-        <div class="grupo">
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="••••••••" />
-        </div>
+        <form th:action="@{/login}" method="POST">
+            <div class="grupo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
 
-        <button class="btn-login" type="button">Logar</button>
+            <div class="grupo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+            </div>
 
-        <p class="link-cadastro">
-            Não tem conta? <a href="/cadastro">Cadastre-se aqui</a>
-        </p>
+            <button class="btn-login" type="submit">Logar</button>
+        </form>
+
     </div>
 </main>
 
 <footer>
-    <p>Rodapé — © 2025 Psi&amp;Mente</p>
+    <p>Rodapé — © 2026 ENTRENÓS</p>
 </footer>
 
 </body>
