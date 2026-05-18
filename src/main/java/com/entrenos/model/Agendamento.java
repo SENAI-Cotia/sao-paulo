@@ -1,54 +1,46 @@
 package com.entrenos.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
-
+import jakarta.persistence.*; // ou javax.persistence.* dependendo da versão do seu Spring
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "tb_agendamento")
+@Table(name = "agendamentos")
 public class Agendamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private LocalDateTime dataHora;
+    private LocalDate data;
+    private LocalTime hora;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
-    private String status;
-
-    public Agendamento(Long id, LocalDateTime dataHora, String status) {
-        this.id = id;
-        this.dataHora = dataHora;
-        this.status = status;
-    }
-
+    // Construtor padrão (obrigatório para o JPA)
     public Agendamento() {
     }
 
-    // GETTERS e SETTERS
-    public Long getId() {
-        return id;
+    // Seu construtor existente
+    public Agendamento(LocalDate data, LocalTime hora) {
+        this.data = data;
+        this.hora = hora;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
+    public LocalDate getData() { return data; }
+    public void setData(LocalDate data) { this.data = data; }
 
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
+    public LocalTime getHora() { return hora; }
+    public void setHora(LocalTime hora) { this.hora = hora; }
 
-    public String getStatus() {
-        return status;
+    public Usuario getUsuario() {
+        return usuario;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
-

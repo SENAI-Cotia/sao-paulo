@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EntreNós — Início</title>
-    <link rel="stylesheet" href="/Css/HomePage.css">
+    <link class="link-css" rel="stylesheet" th:href="@{/css/HomePage.css}">
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
 <header>
     <span class="logo">ENTRENÓS</span>
     <nav>
@@ -24,7 +23,6 @@
     </nav>
 </header>
 
-<!-- ─── HERO ─── -->
 <section class="hero">
     <div class="hero-text">
         <h1 th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '! Sua jornada acadêmica não precisa ser solitária.'">
@@ -32,12 +30,10 @@
         </h1>
         <h1 th:unless="${nomeAluno}">Sua jornada acadêmica não precisa ser solitária.</h1>
         <p>No EntreNós, conectamos você ao apoio psicológico da sua instituição de forma simples e segura. Escolha o melhor horário no calendário ao lado e dê o primeiro passo para cuidar de você.</p>
-        <a href="/cadastro" class="btn-primario">Começar agora</a>
+        <a th:href="@{/cadastro}" class="btn-primario">Começar agora</a>
     </div>
 
-    <!-- ─── CALENDÁRIO ─── -->
     <div class="cal-container">
-
         <div class="cal-header">
             <button class="cal-nav" id="cal-prev">&#8592;</button>
             <span class="cal-titulo" id="cal-titulo"></span>
@@ -57,16 +53,13 @@
             <div class="cal-grid" id="cal-grid"></div>
         </div>
 
-        <!-- Horários (aparecem embaixo ao clicar num dia) -->
         <div class="cal-horarios oculto" id="cal-horarios">
             <p class="cal-horarios-titulo">Horários disponíveis — <span id="cal-data-label"></span></p>
             <div class="cal-slots" id="cal-slots"></div>
         </div>
-
     </div>
 </section>
 
-<!-- ─── POR QUE NOS ESCOLHER ─── -->
 <section class="por-que">
     <h2>Por que usar o EntreNós?</h2>
     <p class="subtitulo">Sua saúde mental tratada com a prioridade que você merece.</p>
@@ -94,14 +87,12 @@
     </div>
 </section>
 
-<!-- ─── CTA TRIAGEM ─── -->
 <section class="triagem" id="triagem">
     <h2>Faça sua triagem</h2>
     <p>A triagem é o primeiro passo para entender suas necessidades e encontrar o acompanhamento ideal para você.</p>
-    <a href="/cadastro" class="btn-triagem">Começar a triagem</a>
+    <a th:href="@{/cadastro}" class="btn-triagem">Começar a triagem</a>
 </section>
 
-<!-- ─── SOBRE A TRIAGEM ─── -->
 <section class="sobre-triagem">
     <div>
         <h2>O que é a triagem psicológica?</h2>
@@ -114,27 +105,97 @@
     </div>
 </section>
 
-<!-- ─── SOBRE NÓS ─── -->
 <section class="sobre-nos" id="sobre">
     <h2>Sobre nós</h2>
     <p>O EntreNós nasceu da percepção de que o sucesso acadêmico e a saúde mental caminham lado a lado, mas raramente encontram o mesmo suporte nas instituições de ensino.</p>
 </section>
 
-<!-- ─── FOOTER ─── -->
 <footer>
     <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
 
-<!-- Thymeleaf injeta as datas indisponíveis antes de carregar o JS externo -->
-<script th:inline="javascript">
-    const datasIndisponiveis = /*[[${datasIndisponiveis}]]*/ null;
-    if (!datasIndisponiveis || !Array.isArray(datasIndisponiveis)) {
-        window.datasIndisponiveis = [];
-    } else {
-        window.datasIndisponiveis = datasIndisponiveis;
-    }
-</script>
-<script src="/Css/JS/calendario.js"></script>
+<button id="btn-central-agendamentos" class="btn-flutuante">📅 Meu Agendamento</button>
 
+<div id="modal-confirmacao" class="modal-container">
+    <div class="modal-conteudo">
+        <h3>Confirmar Agendamento</h3>
+        <p class="subtitulo-modal">Você deseja agendar uma sessão para o dia <strong id="modal-txt-data"></strong> às <strong id="modal-txt-hora"></strong>?</p>
+        <div class="modal-botoes">
+            <button id="btn-modal-cancelar" class="btn-secundario">Cancelar</button>
+            <button id="btn-modal-confirmar" class="btn-primario">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-erro" class="modal-container">
+    <div class="modal-conteudo">
+        <div class="modal-aviso">⚠️</div>
+        <h3 class="modal-erro-titulo">Não foi possível agendar</h3>
+        <p id="modal-erro-mensagem" class="modal-erro-texto"></p>
+        <div class="modal-botoes">
+            <button id="btn-modal-erro-fechar" class="btn-primario modal-botao-verde">Entendido</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-central" class="modal-container">
+    <div class="modal-conteudo modal-largo">
+        <h3>Meu Agendamento</h3>
+        <p class="subtitulo-modal">Gerencie seu horário reservado abaixo:</p>
+
+        <div id="lista-meus-agendamentos" class="container-lista">
+            <p class="carregando">Buscando informações...</p>
+        </div>
+
+        <div class="modal-botoes modal-botoes-topo">
+            <button id="btn-fechar-central" class="btn-primario modal-botao-verde">Fechar Painel</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-confirma-cancelar" class="modal-container modal-sobreposto">
+    <div class="modal-conteudo">
+        <div class="modal-aviso-cancelar">🗑️</div>
+        <h3>Deseja Cancelar?</h3>
+        <p>Tem certeza que deseja cancelar a sua sessão de acolhimento?</p>
+        <p class="texto-perigo">Essa ação não pode ser desfeita.</p>
+        <div class="modal-botoes modal-botoes-topo">
+            <button id="btn-cancelar-nao" class="btn-primario modal-botao-cinza">Não, voltar</button>
+            <button id="btn-cancelar-sim" class="btn-secundario">Sim, Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-limite-atingido" class="modal-container">
+    <div class="modal-conteudo">
+        <div class="modal-aviso">🚫</div>
+        <h3 class="modal-bloqueio-titulo">Agendamento Bloqueado</h3>
+        <p>Você já possui uma sessão ativa agendada no sistema.</p>
+        <p class="modal-instrucao">
+            Para escolher um novo horário, cancele ou reagende a sua sessão atual usando a central abaixo.
+        </p>
+        <div class="modal-botoes modal-botoes-topo">
+            <button id="btn-limite-entendido" class="btn-primario modal-botao-verde">Entendido</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-confirma-reagendar" class="modal-container modal-sobreposto">
+    <div class="modal-conteudo">
+        <div class="modal-aviso-cancelar">🔄</div>
+        <h3>Deseja Reagendar?</h3>
+        <p>Ao prosseguir, seu horário atual será <strong>liberado</strong> para outros alunos e você poderá escolher uma nova vaga no calendário.</p>
+        <p class="texto-alerta">Deseja liberar seu horário atual?</p>
+        <div class="modal-botoes modal-botoes-topo">
+            <button id="btn-reagendar-nao" class="btn-primario modal-botao-cinza">Não, voltar</button>
+            <button id="btn-reagendar-sim" class="btn-secundario modal-botao-azul">Sim, Mudar Horário</button>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    window.datasIndisponiveis = [[${datasIndisponiveis}]] || [];
+</script>
+<script th:src="@{/js/calendario.js}"></script>
 </body>
 </html>

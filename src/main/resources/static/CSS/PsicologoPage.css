@@ -231,7 +231,6 @@ main {
   flex-shrink: 0;
 }
 
-/* VAZIO */
 .dados-vazio {
   display: flex;
   flex-direction: column;
