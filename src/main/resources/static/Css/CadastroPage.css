@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-
   --verde-escuro:  #205F55;
   --verde-medio:   #2E8A8B;
   --verde-claro:   #6DB7CE;
   --verde-palido:  #DDECF3;
   --branco:        #FFFFFF;
-
-
+  --erro:          #c0392b;
+  --sucesso:       #1e7e34;
   --texto-escuro:  #163D37;
   --texto-medio:   #2E8A8B;
-  --texto-claro:   #6DB7CE;
-
-
   --borda:         #C5E1E8;
   --radius:        12px;
   --radius-sm:     6px;
@@ -28,6 +24,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
+.oculto {
+  display: none;
+}
+
 
 header {
   background-color: var(--verde-escuro);
@@ -44,6 +46,11 @@ header {
   text-decoration: none;
 }
 
+.logo span {
+  color: var(--verde-claro);
+}
+
+
 main {
   flex: 1;
   display: flex;
@@ -52,58 +59,57 @@ main {
   padding: 3rem 1.5rem;
 }
 
-.card-login {
+
+.card-cadastro {
   background-color: var(--verde-claro);
   border-radius: var(--radius);
   padding: 2.8rem 2.5rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 440px;
   box-shadow: 0 8px 32px rgba(32, 95, 85, 0.15);
 }
 
-.card-login h2 {
+.card-cadastro h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   color: var(--verde-escuro);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.3rem;
 }
 
-
-.tipo-selector {
-  display: flex;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.tipo-btn {
-  flex: 1;
-  padding: 0.6rem;
-  border: 2px solid var(--borda);
-  border-radius: var(--radius-sm);
-  background: var(--branco);
-  font-family: inherit;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--texto-medio);
-  cursor: pointer;
-  transition: all 0.2s;
+.subtitulo {
   text-align: center;
-}
-
-.tipo-btn.ativo {
-  background-color: var(--verde-escuro);
-  color: var(--branco);
-  border-color: var(--verde-escuro);
-}
-
-.tipo-btn:hover:not(.ativo) {
-  background-color: var(--verde-palido);
-  border-color: var(--verde-medio);
+  font-size: 0.88rem;
+  color: var(--verde-escuro);
+  opacity: 0.75;
+  margin-bottom: 1.8rem;
 }
 
 
-.grupo { margin-bottom: 1.2rem; }
+.mensagem {
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.mensagem-sucesso {
+  background-color: rgba(30, 126, 52, 0.12);
+  color: var(--sucesso);
+  border: 1px solid rgba(30, 126, 52, 0.3);
+}
+
+.mensagem-erro {
+  background-color: rgba(192, 57, 43, 0.1);
+  color: var(--erro);
+  border: 1px solid rgba(192, 57, 43, 0.25);
+}
+
+
+.grupo {
+  margin-bottom: 1.2rem;
+}
 
 .grupo label {
   display: block;
@@ -133,7 +139,39 @@ main {
   box-shadow: 0 0 0 3px rgba(32, 95, 85, 0.12);
 }
 
-.btn-login {
+.grupo > div {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.tipo-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid var(--borda);
+  border-radius: var(--radius-sm);
+  background: var(--branco);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--texto-medio);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tipo-btn.ativo {
+  background-color: var(--verde-escuro);
+  border-color: var(--verde-escuro);
+  color: var(--branco);
+}
+
+.tipo-btn:hover:not(.ativo) {
+  border-color: var(--verde-medio);
+  color: var(--verde-escuro);
+}
+
+
+.btn-cadastrar {
   width: 100%;
   padding: 0.85rem;
   margin-top: 0.8rem;
@@ -148,23 +186,25 @@ main {
   transition: background-color 0.2s, transform 0.15s;
 }
 
-.btn-login:hover {
+.btn-cadastrar:hover {
   background-color: var(--verde-medio);
   transform: translateY(-1px);
 }
 
-.link-cadastro {
+
+.link-login {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.88rem;
   color: var(--verde-escuro);
 }
 
-.link-cadastro a {
+.link-login a {
   color: var(--verde-escuro);
   font-weight: 500;
   text-decoration: underline;
 }
+
 
 footer {
   background-color: var(--verde-escuro);
@@ -172,4 +212,15 @@ footer {
   text-align: center;
   color: var(--verde-claro);
   font-size: 0.82rem;
+}
+
+
+@media (max-width: 480px) {
+  header {
+    padding: 0 1.5rem;
+  }
+
+  .card-cadastro {
+    padding: 2rem 1.5rem;
+  }
 }

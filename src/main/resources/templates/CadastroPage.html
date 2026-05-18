@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro — EntreNós</title>
+    <link rel="stylesheet" href="/Css/CadastroPage.css" />
+</head>
+<body>
+<header>
+    <a href="/" class="logo">ENTRE<span>NÓS</span></a>
+</header>
+<main>
+    <div class="card-cadastro">
+        <h2>Crie sua conta</h2>
+        <p class="subtitulo">Preencha os dados abaixo para começar</p>
+
+        <p th:if="${mensagemSucesso}" th:text="${mensagemSucesso}" class="mensagem mensagem-sucesso"></p>
+        <p th:if="${mensagemErro}" th:text="${mensagemErro}" class="mensagem mensagem-erro"></p>
+        <p th:if="${mensagemEmail}" th:text="${mensagemEmail}" class="mensagem mensagem-erro"></p>
+
+        <form th:action="@{/salvar}" th:object="${aluno}" method="POST">
+
+            <div class="grupo">
+                <label>Tipo de conta</label>
+                <div>
+                    <button type="button" class="tipo-btn ativo" id="btn-aluno" onclick="selecionarPerfil('aluno')">🎓 Aluno</button>
+                    <button type="button" class="tipo-btn" id="btn-psi" onclick="selecionarPerfil('psicologo')">🩺 Psicólogo</button>
+                </div>
+            </div>
+
+            <input type="hidden" id="tipoPerfil" name="tipoPerfil" value="aluno" />
+
+            <div class="grupo">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" th:field="*{nome}" placeholder="Seu nome" required />
+            </div>
+
+            <div class="grupo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="seu@email.com" required />
+            </div>
+
+            <div class="grupo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" th:field="*{senha}" placeholder="Mínimo 6 caracteres" required minlength="6" />
+            </div>
+
+            <div class="grupo">
+                <label for="confirmarSenha">Confirmar senha</label>
+                <input type="password" id="confirmarSenha" placeholder="Repita a senha" required minlength="6" />
+            </div>
+
+            <div class="grupo" id="grupo-codigo">
+                <label for="codigoPsicologo">Código de Psicólogo</label>
+                <input type="text" id="codigoPsicologo" name="codigoPsicologo" placeholder="Digite o código secreto" />
+            </div>
+
+            <button class="btn-cadastrar" type="submit">Cadastrar</button>
+        </form>
+
+        <p class="link-login">
+            Já tem conta? <a href="/login">Faça login aqui</a>
+        </p>
+    </div>
+</main>
+<footer>
+    <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
+</footer>
+<script>
+    // Oculta o campo de código no carregamento via classe CSS
+    document.getElementById('grupo-codigo').classList.add('oculto');
+
+    function selecionarPerfil(tipo) {
+        document.getElementById('btn-aluno').classList.toggle('ativo', tipo === 'aluno');
+        document.getElementById('btn-psi').classList.toggle('ativo', tipo === 'psicologo');
+        document.getElementById('tipoPerfil').value = tipo;
+        document.getElementById('grupo-codigo').classList.toggle('oculto', tipo !== 'psicologo');
+    }
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const senha = document.getElementById('senha').value;
+        const confirmar = document.getElementById('confirmarSenha').value;
+
+        if (senha !== confirmar) {
+            e.preventDefault();
+            const avisoExistente = document.querySelector('.aviso-senha');
+            if (avisoExistente) avisoExistente.remove();
+            const aviso = document.createElement('p');
+            aviso.className = 'mensagem mensagem-erro aviso-senha';
+            aviso.textContent = 'As senhas não coincidem.';
+            document.querySelector('.btn-cadastrar').before(aviso);
+            return;
+        }
+
+        const tipo = document.getElementById('tipoPerfil').value;
+        if (tipo === 'psicologo') {
+            const codigo = document.getElementById('codigoPsicologo').value.trim();
+            if (!codigo) {
+                e.preventDefault();
+                const avisoExistente = document.querySelector('.aviso-codigo');
+                if (avisoExistente) avisoExistente.remove();
+                const aviso = document.createElement('p');
+                aviso.className = 'mensagem mensagem-erro aviso-codigo';
+                aviso.textContent = 'Informe o código de psicólogo.';
+                document.querySelector('.btn-cadastrar').before(aviso);
+            }
+        }
+    });
+</script>
+</body>
+</html>

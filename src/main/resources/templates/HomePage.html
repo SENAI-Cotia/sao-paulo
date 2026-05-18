@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Agendamento e Triagem para Alunos</title>
+    <title>EntreNós — Início</title>
     <link rel="stylesheet" href="/Css/HomePage.css">
 </head>
 <body>
@@ -12,23 +12,30 @@
 <header>
     <span class="logo">ENTRENÓS</span>
     <nav>
-        <a href="#">Início</a>
         <a href="#triagem">Triagem</a>
         <a href="#perguntas">Perguntas</a>
         <a href="#sobre">Sobre nós</a>
-        <a href="login" class="btn-nav">Entrar</a>
+
+        <span th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '!'"></span>
+
+        <form th:action="@{/logout}" method="post" id="logout-form" class="oculto"></form>
+
+        <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
     </nav>
 </header>
 
 <!-- ─── HERO ─── -->
 <section class="hero">
     <div class="hero-text">
-        <h1>Sua jornada acadêmica não precisa ser solitária.</h1>
+        <h1 th:if="${nomeAluno}" th:text="'Olá, ' + ${nomeAluno} + '! Sua jornada acadêmica não precisa ser solitária.'">
+            Sua jornada acadêmica não precisa ser solitária.
+        </h1>
+        <h1 th:unless="${nomeAluno}">Sua jornada acadêmica não precisa ser solitária.</h1>
         <p>No EntreNós, conectamos você ao apoio psicológico da sua instituição de forma simples e segura. Escolha o melhor horário no calendário ao lado e dê o primeiro passo para cuidar de você.</p>
-        <a href="cadastro.html" class="btn-primario">Começar agora</a>
+        <a href="/cadastro" class="btn-primario">Começar agora</a>
     </div>
     <div class="hero-imagem">
-        Calendario
+        Calendário
     </div>
 </section>
 
@@ -36,26 +43,22 @@
 <section class="por-que">
     <h2>Por que usar o EntreNós?</h2>
     <p class="subtitulo">Sua saúde mental tratada com a prioridade que você merece.</p>
-
     <div class="cards-por-que">
         <div class="card-motivo">
             <div class="icone">🌱</div>
             <h3>Triagem Humanizada</h3>
             <p>Um sistema inteligente que te entende antes mesmo da sessão, garantindo que seu acolhimento seja assertivo.</p>
         </div>
-
         <div class="card-motivo">
             <div class="icone">🗓️</div>
             <h3>Agendamento Direto</h3>
             <p>Sem filas ou burocracia. Escolha o horário disponível da psicóloga da sua instituição e reserve em segundos.</p>
         </div>
-
         <div class="card-motivo">
             <div class="icone">🛡️</div>
             <h3>Espaço Seguro</h3>
             <p>Seus dados e conversas são protegidos por sigilo ético e criptografia, criando um ambiente de total confiança.</p>
         </div>
-
         <div class="card-motivo">
             <div class="icone">🎓</div>
             <h3>Foco Estudantil</h3>
@@ -68,7 +71,7 @@
 <section class="triagem" id="triagem">
     <h2>Faça sua triagem</h2>
     <p>A triagem é o primeiro passo para entender suas necessidades e encontrar o acompanhamento ideal para você.</p>
-    <a href="cadastro.html" class="btn-triagem">Começar a triagem</a>
+    <a href="/cadastro" class="btn-triagem">Começar a triagem</a>
 </section>
 
 <!-- ─── SOBRE A TRIAGEM ─── -->
@@ -84,38 +87,15 @@
     </div>
 </section>
 
-<!-- ─── PERGUNTAS ─── -->
-<section class="perguntas" id="perguntas">
-    <h2>Perguntas frequentes</h2>
-    <div class="grid-perguntas">
-        <div class="pergunta-item">
-            <span class="pergunta-letra">A</span>
-            Pergunta A — clique para saber mais
-        </div>
-        <div class="pergunta-item">
-            <span class="pergunta-letra">C</span>
-            Pergunta C — clique para saber mais
-        </div>
-        <div class="pergunta-item">
-            <span class="pergunta-letra">B</span>
-            Pergunta B — clique para saber mais
-        </div>
-        <div class="pergunta-item">
-            <span class="pergunta-letra">D</span>
-            Pergunta D — clique para saber mais
-        </div>
-    </div>
-</section>
-
 <!-- ─── SOBRE NÓS ─── -->
 <section class="sobre-nos" id="sobre">
     <h2>Sobre nós</h2>
-    <p>O EntreNós nasceu da percepção de que o sucesso acadêmico e a saúde mental caminham lado a lado, mas raramente encontram o mesmo suporte nas instituições de ensino. Entre livros, prazos e provas, existe o indivíduo — e é para este indivíduo que criamos um espaço de escuta e cuidado.</p>
+    <p>O EntreNós nasceu da percepção de que o sucesso acadêmico e a saúde mental caminham lado a lado, mas raramente encontram o mesmo suporte nas instituições de ensino.</p>
 </section>
 
 <!-- ─── FOOTER ─── -->
 <footer>
-    <p>© 2026 ENTRENÓS— Todos os direitos reservados</p>
+    <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
 
 </body>

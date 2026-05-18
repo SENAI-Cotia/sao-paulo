@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* ── Paleta Principal ── */
+  --verde-escuro:  #205F55;
+  --verde-medio:   #2E8A8B;
+  --verde-claro:   #6DB7CE;
+  --verde-palido:  #DDECF3;
+  --branco:        #FFFFFF;
+
+  /* ── Texto ── */
+  --texto-escuro:  #163D37;
+  --texto-medio:   #2E8A8B;
+  --texto-claro:   #6DB7CE;
+
+  /* ── Estrutura ── */
+  --borda:         #C5E1E8;
+  --radius:        12px;
+  --radius-sm:     6px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--verde-palido);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background-color: var(--verde-escuro);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--branco);
+  text-decoration: none;
+}
+
+.badge-psicologo {
+  background-color: var(--verde-claro);
+  color: var(--verde-escuro);
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* PAINEL */
+.painel {
+  background-color: var(--verde-claro);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.painel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--verde-escuro);
+  text-align: center;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* LISTA AGENDAMENTOS */
+.agendamento-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--verde-palido);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.agendamento-item:hover {
+  background-color: var(--branco);
+  box-shadow: 0 2px 10px rgba(32, 95, 85, 0.1);
+}
+
+.agendamento-item.ativo {
+  background-color: var(--branco);
+  border-color: var(--verde-medio);
+  box-shadow: 0 2px 10px rgba(32, 95, 85, 0.12);
+}
+
+.aluno-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.aluno-nome {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--texto-escuro);
+}
+
+.aluno-hora {
+  font-size: 0.82rem;
+  color: var(--verde-escuro);
+  background-color: var(--verde-claro);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.btn-detalhes {
+  background-color: var(--verde-medio);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-detalhes:hover {
+  background-color: var(--verde-escuro);
+}
+
+/* PAINEL DADOS */
+.painel-dados {
+  background-color: var(--verde-claro);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  min-height: 260px;
+}
+
+.painel-dados h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--verde-escuro);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dados-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.dados-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.campo label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--texto-claro);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.campo span {
+  font-size: 0.92rem;
+  color: var(--texto-escuro);
+  font-weight: 400;
+}
+
+.campo .badge-sim {
+  display: inline-block;
+  background-color: var(--verde-medio);
+  color: var(--branco);
+  font-size: 0.78rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+}
+
+.campo .badge-nao {
+  display: inline-block;
+  background-color: #C8A882;
+  color: #4A3010;
+  font-size: 0.78rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* FOTO PLACEHOLDER */
+.foto-aluno {
+  width: 100px;
+  height: 100px;
+  background-color: var(--borda);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-claro);
+  font-size: 0.75rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* VAZIO */
+.dados-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  color: var(--texto-claro);
+  font-size: 0.88rem;
+  gap: 0.5rem;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--verde-escuro);
+  padding: 1.2rem 3rem;
+  text-align: center;
+  color: var(--verde-claro);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}

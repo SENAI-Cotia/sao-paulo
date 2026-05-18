@@ -9,35 +9,57 @@
 <body>
 
 <header>
-    <a href="/" class="logo">ENTRENÓS</a>
+    <a href="/" class="logo">ENTRE<span>NÓS</span></a>
 </header>
 
 <main>
     <div class="card-login">
-        <h2>Login</h2>
+        <h2>Bem-vindo!</h2>
 
-        <p th:if="${mensagemErro}" th:text="${mensagemErro}" style="color: red; font-size: 0.9rem; margin-bottom: 10px;"></p>
+        <div class="tipo-selector">
+            <button type="button" class="tipo-btn ativo" id="btn-usuario" onclick="selecionarTipo('usuario')">🎓 Aluno</button>
+            <button type="button" class="tipo-btn" id="btn-psicologo" onclick="selecionarTipo('psicologo')">🩺 Psicólogo</button>
+        </div>
+
+        <p th:if="${param.error}">
+            E-mail ou senha inválidos.
+        </p>
+
+        <p th:if="${param.logout}">
+            Você saiu com sucesso.
+        </p>
 
         <form th:action="@{/login}" method="POST">
+
             <div class="grupo">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+                <label for="username">E-mail</label>
+                <input type="email" id="username" name="username" placeholder="seu@email.com" required autofocus />
             </div>
 
             <div class="grupo">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required />
             </div>
 
-            <button class="btn-login" type="submit">Logar</button>
+            <button class="btn-login" type="submit">Entrar</button>
         </form>
 
+        <p class="link-cadastro">
+            Não tem conta? <a href="/cadastro">Cadastre-se aqui</a>
+        </p>
     </div>
 </main>
 
 <footer>
-    <p>Rodapé — © 2026 ENTRENÓS</p>
+    <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
+
+<script>
+    function selecionarTipo(tipo) {
+        document.getElementById('btn-usuario').classList.toggle('ativo', tipo === 'usuario');
+        document.getElementById('btn-psicologo').classList.toggle('ativo', tipo === 'psicologo');
+    }
+</script>
 
 </body>
 </html>

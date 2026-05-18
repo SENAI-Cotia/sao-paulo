@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --verde-escuro: #2d5a4e;
-  --verde-medio: #3d7a6b;
-  --verde-claro: #a8d5c2;
-  --verde-palido: #e6f4ef;
-  --branco: #ffffff;
-  --cinza-claro: #f5f5f0;
-  --texto-escuro: #1a2e28;
-  --texto-medio: #4a6b62;
-  --texto-claro: #7a9990;
-  --borda: #c8e0d8;
+  /* Cores */
+  --verde-escuro: #205F55;
+  --verde-medio: #2E8A8B;
+  --verde-claro: #6DB7CE;
+  --verde-palido: #DDECF3;
+  --branco: #FFFFFF;
+  --cinza-claro: #F8FAFB;
+  --texto-escuro: #163D37;
+  --texto-medio: #2E8A8B;
+  --texto-claro: #6DB7CE;
+  --borda: #C5E1E8;
+
+  /* Estilização mantida */
   --radius: 12px;
   --radius-sm: 6px;
-  --shadow: 0 4px 20px rgba(45, 90, 78, 0.12);
+  --shadow: 0 4px 20px rgba(32, 95, 85, 0.15);
 }
 
 * {
@@ -27,6 +30,11 @@ body {
   background-color: var(--cinza-claro);
   color: var(--texto-escuro);
   line-height: 1.7;
+}
+
+/* ─── UTILITÁRIO ─── */
+.oculto {
+  display: none;
 }
 
 /* ─── HEADER / NAV ─── */
@@ -69,17 +77,17 @@ nav a:hover {
 }
 
 .btn-nav {
-  background-color: var(--verde-claro);
-  color: var(--verde-escuro) !important;
-  padding: 0.45rem 1.2rem;
-  border-radius: var(--radius-sm);
-  font-weight: 500 !important;
-  transition: background-color 0.2s !important;
+  background-color: #e74c3c;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 .btn-nav:hover {
-  background-color: var(--branco) !important;
-  color: var(--verde-escuro) !important;
+  background-color: #c0392b;
 }
 
 /* ─── HERO ─── */
@@ -275,52 +283,7 @@ nav a:hover {
   font-size: 0.85rem;
 }
 
-/* ─── PERGUNTAS ─── */
-.perguntas {
-  padding: 5rem 3rem;
-  background-color: var(--branco);
-}
 
-.perguntas h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  color: var(--verde-escuro);
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-
-.grid-perguntas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.pergunta-item {
-  background-color: var(--verde-claro);
-  border-radius: var(--radius-sm);
-  padding: 1.2rem 1.5rem;
-  color: var(--verde-escuro);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-height: 60px;
-}
-
-.pergunta-item:hover {
-  background-color: var(--verde-medio);
-  color: var(--branco);
-}
-
-.pergunta-letra {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  opacity: 0.7;
-}
 
 /* ─── SOBRE NÓS ─── */
 .sobre-nos {
