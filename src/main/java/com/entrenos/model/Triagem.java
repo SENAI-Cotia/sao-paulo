@@ -24,7 +24,6 @@ public class Triagem {
     public Triagem() {
     }
 
-    // GETTERS e SETTERS
     public Long getId() {
         return id;
     }
