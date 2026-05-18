@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/cadastro", "/salvar", "/Css/**", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/login", "/cadastro", "/salvar", "/Css/**", "/css/**", "/js/**", "/JS/**", "/images/**").permitAll()
                         .requestMatchers("/psicologo", "/psicologo/**").hasRole("PSICOLOGO")
                         .requestMatchers("/home", "/home/**").hasRole("ALUNO")
                         .anyRequest().authenticated()

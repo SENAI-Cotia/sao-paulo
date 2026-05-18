@@ -32,7 +32,6 @@
         </h1>
         <h1 th:unless="${nomeAluno}">Sua jornada acadêmica não precisa ser solitária.</h1>
         <p>No EntreNós, conectamos você ao apoio psicológico da sua instituição de forma simples e segura. Escolha o melhor horário no calendário ao lado e dê o primeiro passo para cuidar de você.</p>
-        <a href="/cadastro" class="btn-primario">Começar agora</a>
     </div>
 
     <!-- ─── CALENDÁRIO ─── -->
@@ -134,7 +133,7 @@
         window.datasIndisponiveis = datasIndisponiveis;
     }
 </script>
-<script src="/Css/JS/calendario.js"></script>
+<script th:src="@{/JS/calendario.js}"></script>
 
 </body>
 </html>

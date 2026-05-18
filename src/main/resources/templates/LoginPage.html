@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login — EntreNós</title>
-    <link rel="stylesheet" href="/Css/LoginPage.css" />
+    <link rel="stylesheet" th:href="@{/Css/LoginPage.css}" />
 </head>
 <body>
 
@@ -54,12 +54,7 @@
     <p>© 2026 ENTRENÓS — Todos os direitos reservados</p>
 </footer>
 
-<script>
-    function selecionarTipo(tipo) {
-        document.getElementById('btn-usuario').classList.toggle('ativo', tipo === 'usuario');
-        document.getElementById('btn-psicologo').classList.toggle('ativo', tipo === 'psicologo');
-    }
-</script>
+<script th:src="@{/JS/LoginPage.js}"></script>
 
 </body>
 </html>

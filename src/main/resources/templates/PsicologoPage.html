@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel do Profissional</title>
-    <link rel="stylesheet" href="/Css/PsicologoPage.css" />
+    <link rel="stylesheet" th:href="@{/Css/PsicologoPage.css}" />
 </head>
 <body>
 <header>
     <a href="/" class="logo">EntreNós</a>
     <span class="badge-psicologa" th:text="${nomeUsuario != null ? nomeUsuario : 'Profissional'}">Psicólogo</span>
+    <form th:action="@{/logout}" method="post" id="logout-form" class="oculto"></form>
+    <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
 </header>
 <main>
     <div class="painel">
@@ -37,36 +39,6 @@
 <footer>
     <p>Rodapé — &copy; 2026 ENTRENÓS</p>
 </footer>
-<script>
-    function mostrarDados(elemento, nome, email, role) {
-        document.querySelectorAll('.agendamento-item')
-                .forEach(el => el.classList.remove('ativo'));
-
-        elemento.classList.add('ativo');
-
-        const badgeClass = role === 'ROLE_ALUNO' ? 'badge-sim' : 'badge-nao';
-        const labelRole  = role === 'ROLE_ALUNO' ? 'Aluno' : 'Psicólogo';
-
-        document.getElementById('dados-conteudo').innerHTML = `
-            <div class="dados-grid">
-                <div class="dados-campos">
-                    <div class="campo">
-                        <label>Nome</label>
-                        <span>${nome}</span>
-                    </div>
-                    <div class="campo">
-                        <label>E-mail</label>
-                        <span>${email}</span>
-                    </div>
-                    <div class="campo">
-                        <label>Tipo de Perfil</label>
-                        <span class="${badgeClass}">${labelRole}</span>
-                    </div>
-                </div>
-                <div class="foto-usuario">Foto</div>
-            </div>
-        `;
-    }
-</script>
+<script th:src="@{/JS/PsicologoPage.js}"></script>
 </body>
 </html>

@@ -107,22 +107,27 @@ nav a:hover { color: var(--branco); }
   max-width: 440px;
 }
 
-.btn-primario {
-  display: inline-block;
-  background-color: var(--verde-escuro);
-  color: var(--branco);
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  transition: background-color 0.2s, transform 0.15s;
+.oculto {
+  display: none;
 }
 
-.btn-primario:hover {
-  background-color: var(--verde-medio);
-  transform: translateY(-1px);
+.btn-nav {
+  background-color: transparent;
+  border: 1.5px solid var(--verde-claro);
+  color: var(--verde-claro);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-nav:hover {
+  background-color: var(--verde-claro);
+  color: var(--verde-escuro);
 }
 
 /* ─── CALENDÁRIO ─── */
