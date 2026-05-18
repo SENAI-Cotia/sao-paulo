@@ -124,5 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCalendario();
     });
 
-    renderCalendario();
+    renderCalendario(); //teste;
 });
