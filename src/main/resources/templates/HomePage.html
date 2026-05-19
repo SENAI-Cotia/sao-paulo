@@ -89,7 +89,7 @@
 <section class="triagem" id="triagem">
     <h2>Faça sua triagem</h2>
     <p>A triagem é o primeiro passo para entender suas necessidades e encontrar o acompanhamento ideal para você.</p>
-    <a th:href="@{/cadastro}" class="btn-triagem">Começar a triagem</a>
+    <button class="btn-triagem" onclick="triagemIniciar(); document.getElementById('perguntas').scrollIntoView({behavior: 'smooth'});">Começar a triagem</button>
 </section>
 
 <section class="sobre-triagem">
@@ -101,6 +101,32 @@
     </div>
     <div class="imagem-triagem">
         Imagem da triagem
+    </div>
+</section>
+
+<section class="triagem-quiz" id="perguntas">
+    <div class="triagem-quiz-inner">
+
+        <div class="tq-quiz" id="tq-quiz">
+            <div class="tq-progresso-wrap">
+                <div class="tq-progresso-bar" id="tq-progresso-bar"></div>
+            </div>
+            <p class="tq-progresso-label" id="tq-progresso-label">Pergunta 1 de 5</p>
+
+            <div class="tq-pergunta-wrap" id="tq-pergunta-wrap"></div>
+
+            <div class="tq-nav">
+                <button class="tq-btn-sec" id="tq-btn-anterior" onclick="triagemAnterior()">← Anterior</button>
+                <button class="tq-btn-pri" id="tq-btn-proximo" onclick="triagemProximo()" disabled>Próxima →</button>
+            </div>
+        </div>
+
+        <div class="tq-resultado oculto" id="tq-resultado">
+            <div class="tq-resultado-icone">🙏</div>
+            <h2>Obrigado por realizar o questionário!</h2>
+            <p>Suas respostas foram registradas. Em breve nossa equipe entrará em contato com você.</p>
+        </div>
+
     </div>
 </section>
 
@@ -141,11 +167,9 @@
     <div class="modal-conteudo modal-largo">
         <h3>Meu Agendamento</h3>
         <p class="subtitulo-modal">Gerencie seu horário reservado abaixo:</p>
-
         <div id="lista-meus-agendamentos" class="container-lista">
             <p class="carregando">Buscando informações...</p>
         </div>
-
         <div class="modal-botoes modal-botoes-topo">
             <button id="btn-fechar-central" class="btn-primario modal-botao-verde">Fechar Painel</button>
         </div>
@@ -196,5 +220,6 @@
     window.datasIndisponiveis = [[${datasIndisponiveis}]] || [];
 </script>
 <script th:src="@{/JS/calendario.js}"></script>
+<script th:src="@{/JS/TriagemPage.js}"></script>
 </body>
 </html>
