@@ -1,19 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('/fonts/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
 
 :root {
-
   --verde-escuro:  #205F55;
   --verde-medio:   #2E8A8B;
   --verde-claro:   #6DB7CE;
   --verde-palido:  #DDECF3;
   --branco:        #FFFFFF;
-
-
   --texto-escuro:  #163D37;
   --texto-medio:   #2E8A8B;
   --texto-claro:   #6DB7CE;
-
-
   --borda:         #C5E1E8;
   --radius:        12px;
   --radius-sm:     6px;
@@ -22,7 +27,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   background-color: var(--verde-palido);
   min-height: 100vh;
   display: flex;
@@ -69,7 +74,6 @@ main {
   margin-bottom: 2rem;
 }
 
-
 .tipo-selector {
   display: flex;
   gap: 0.8rem;
@@ -82,7 +86,7 @@ main {
   border: 2px solid var(--borda);
   border-radius: var(--radius-sm);
   background: var(--branco);
-  font-family: inherit;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--texto-medio);
@@ -102,7 +106,6 @@ main {
   border-color: var(--verde-medio);
 }
 
-
 .grupo { margin-bottom: 1.2rem; }
 
 .grupo label {
@@ -121,7 +124,7 @@ main {
   border: 1.5px solid var(--borda);
   border-radius: var(--radius-sm);
   background-color: var(--branco);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.95rem;
   color: var(--texto-escuro);
   outline: none;
@@ -141,7 +144,7 @@ main {
   color: var(--branco);
   border: none;
   border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;

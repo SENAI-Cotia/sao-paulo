@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('/fonts/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
 
 :root {
   --verde-escuro: #205F55;
@@ -19,16 +29,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   background-color: var(--cinza-claro);
   color: var(--texto-escuro);
   line-height: 1.7;
 }
 
-/* ─── UTILITÁRIO ─── */
 .oculto { display: none !important; }
 
-/* ─── HEADER / NAV ─── */
 header {
   background-color: var(--verde-escuro);
   padding: 0 3rem;
@@ -65,13 +73,18 @@ nav a {
 
 nav a:hover { color: var(--branco); }
 
+nav span {
+  color: var(--branco);
+}
+
+
 .btn-nav {
   background-color: transparent;
-  border: 1.5px solid var(--verde-claro);
-  color: var(--verde-claro) !important;
+  border: 1.5px solid var(--branco);
+  color: var(--branco) !important;
   padding: 0.4rem 1.1rem;
   border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
@@ -80,11 +93,11 @@ nav a:hover { color: var(--branco); }
 }
 
 .btn-nav:hover {
-  background-color: var(--verde-claro);
+  background-color: var(--branco);
   color: var(--verde-escuro) !important;
 }
 
-/* ─── HERO ─── */
+
 .hero {
   background-color: var(--verde-palido);
   display: grid;
@@ -134,7 +147,6 @@ nav a:hover { color: var(--branco); }
   transform: translateY(-1px);
 }
 
-/* ─── CALENDÁRIO ─── */
 .cal-container {
   background-color: var(--branco);
   border-radius: var(--radius);
@@ -170,7 +182,6 @@ nav a:hover { color: var(--branco); }
 
 .cal-nav:hover { background-color: var(--verde-palido); }
 
-/* ─── GRADE DO CALENDÁRIO ─── */
 .cal-tabela {
   width: 100%;
 }
@@ -253,7 +264,6 @@ nav a:hover { color: var(--branco); }
   font-weight: 400;
 }
 
-/* ─── BOTÕES DE HORÁRIOS (SLOTS) ─── */
 .cal-horarios {
   margin-top: 1.2rem;
   padding-top: 1rem;
@@ -281,7 +291,7 @@ nav a:hover { color: var(--branco); }
   cursor: pointer;
   color: var(--verde-escuro);
   background: var(--verde-palido);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 500;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -299,7 +309,6 @@ nav a:hover { color: var(--branco); }
   cursor: not-allowed !important;
 }
 
-/* ─── ESTRUTURA BASE DOS MODAIS ─── */
 .modal-container {
   position: fixed;
   top: 0;
@@ -394,7 +403,6 @@ nav a:hover { color: var(--branco); }
   transform: none !important;
 }
 
-/* ─── BOTÃO FLUTUANTE DA CENTRAL ─── */
 .btn-flutuante {
   position: fixed;
   bottom: 30px;
@@ -427,7 +435,6 @@ nav a:hover { color: var(--branco); }
   margin-bottom: 1.5rem;
 }
 
-/* LISTA DE AGENDAMENTOS */
 .container-lista {
   max-height: 250px;
   overflow-y: auto;
@@ -499,7 +506,6 @@ nav a:hover { color: var(--branco); }
   padding: 1rem 0;
 }
 
-/* ─── POR QUE NOS ESCOLHER ─── */
 .por-que {
   padding: 5rem 3rem;
   background-color: var(--branco);
@@ -564,7 +570,6 @@ nav a:hover { color: var(--branco); }
   line-height: 1.6;
 }
 
-/* ─── TRIAGEM INSTITUCIONAL ─── */
 .triagem {
   background-color: var(--verde-escuro);
   padding: 5rem 3rem;
@@ -599,7 +604,6 @@ nav a:hover { color: var(--branco); }
 
 .btn-triagem:hover { background-color: var(--branco); }
 
-/* ─── SOBRE A TRIAGEM ─── */
 .sobre-triagem {
   padding: 5rem 3rem;
   background-color: var(--cinza-claro);
@@ -633,7 +637,6 @@ nav a:hover { color: var(--branco); }
   font-size: 0.85rem;
 }
 
-/* ─── SOBRE NÓS ─── */
 .sobre-nos {
   padding: 5rem 3rem;
   background-color: var(--verde-palido);
@@ -656,7 +659,6 @@ nav a:hover { color: var(--branco); }
   line-height: 1.8;
 }
 
-/* ─── FOOTER ─── */
 footer {
   background-color: var(--verde-escuro);
   padding: 1.5rem 3rem;
@@ -721,7 +723,6 @@ footer {
   z-index: 10001;
 }
 
-/* ─── RESPONSIVO ─── */
 @media (max-width: 768px) {
   header { padding: 0 1.5rem; }
   nav { gap: 1rem; }

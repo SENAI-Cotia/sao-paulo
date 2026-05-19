@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('/fonts/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
 
 :root {
   --verde-escuro:  #205F55;
@@ -17,14 +27,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   background-color: var(--verde-palido);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* HEADER */
 header {
   background-color: var(--verde-escuro);
   padding: 0 2.5rem;
@@ -41,16 +50,13 @@ header {
   text-decoration: none;
 }
 
-.badge-psicologo {
-  background-color: var(--verde-claro);
-  color: var(--verde-escuro);
-  padding: 0.4rem 1.2rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+.badge-psicologa {
+  color: var(--branco);
+   font-size: 0.9rem;
+   font-weight: 400;
+   letter-spacing: 0.03em;
+   margin-right: 0.5rem;
+ }
 
 .oculto {
   display: none;
@@ -58,11 +64,11 @@ header {
 
 .btn-nav {
   background-color: transparent;
-  border: 1.5px solid var(--verde-claro);
-  color: var(--verde-claro);
+  border: 1.5px solid var(--branco);
+  color: var(--branco) !important;
   padding: 0.4rem 1.1rem;
   border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
@@ -71,11 +77,10 @@ header {
 }
 
 .btn-nav:hover {
-  background-color: var(--verde-claro);
-  color: var(--verde-escuro);
+  background-color: var(--branco);
+  color: var(--verde-escuro) !important;
 }
 
-/* MAIN */
 main {
   flex: 1;
   padding: 2.5rem;
@@ -85,7 +90,6 @@ main {
   align-items: start;
 }
 
-/* PAINEL */
 .painel {
   background-color: var(--verde-claro);
   border-radius: var(--radius);
@@ -102,7 +106,6 @@ main {
   text-transform: uppercase;
 }
 
-/* LISTA AGENDAMENTOS */
 .agendamento-item {
   display: flex;
   align-items: center;
@@ -153,7 +156,7 @@ main {
   border: none;
   border-radius: var(--radius-sm);
   padding: 0.4rem 0.9rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -165,7 +168,6 @@ main {
   background-color: var(--verde-escuro);
 }
 
-/* PAINEL DADOS */
 .painel-dados {
   background-color: var(--verde-claro);
   border-radius: var(--radius);
@@ -234,7 +236,6 @@ main {
   border-radius: 4px;
 }
 
-/* FOTO PLACEHOLDER */
 .foto-aluno {
   width: 100px;
   height: 100px;
@@ -260,7 +261,6 @@ main {
   gap: 0.5rem;
 }
 
-/* FOOTER */
 footer {
   background-color: var(--verde-escuro);
   padding: 1.2rem 3rem;

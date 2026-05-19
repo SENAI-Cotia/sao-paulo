@@ -9,9 +9,11 @@
 <body>
 <header>
     <a href="/" class="logo">EntreNós</a>
-    <span class="badge-psicologa" th:text="${nomeUsuario != null ? nomeUsuario : 'Profissional'}">Psicólogo</span>
-    <form th:action="@{/logout}" method="post" id="logout-form" class="oculto"></form>
-    <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
+    <nav>
+        <span class="badge-psicologa" th:text="'Olá, ' + ${nomeUsuario != null ? nomeUsuario : 'Profissional'}">Psicólogo</span>
+        <form th:action="@{/logout}" method="post" id="logout-form" class="oculto"></form>
+        <a href="javascript:void(0)" class="btn-nav" onclick="document.getElementById('logout-form').submit();">Sair</a>
+    </nav>
 </header>
 <main>
     <div class="painel">
